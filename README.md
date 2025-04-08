@@ -6,3 +6,9 @@
 https://habr.com/ru/articles/823816/
 
 
+# Управляем всеми
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker-compose -f 1.yml up --force-recreate -d
+
+
