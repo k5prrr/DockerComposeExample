@@ -1,11 +1,13 @@
 services:
   adminer:
+    container_name: adminer1
     image: adminer
     restart: always
     ports:
       - 45010:8080
 
   db:
+    container_name: db1
     restart: always
     image: postgres:15.2
     env_file:
