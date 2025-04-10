@@ -1,4 +1,11 @@
 services:
+  web:
+    image: nginx:latest
+    volumes:
+      - ./html:/usr/share/nginx/html
+    ports:
+      - "45012:80"
+
   adminer:
     container_name: adminer1
     image: adminer
