@@ -70,13 +70,16 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       JVM_OPTS: "-Xms512m -Xmx512m -XX:+UseG1GC"
 
+# https://habr.com/ru/articles/823936/
+# https://pkg.go.dev/github.com/go-redis/redis#Options
   redis:
     container_name: redis1
     image: redis:latest
     ports:
       - "45013:6379"
-    env_file:
-      - .env
+#    env_file:
+#      - .env
+#    command: ["redis-server", "--requirepass", "$$REDIS_PASSWORD"]
     volumes:
       - redis_data:/data
     networks:
