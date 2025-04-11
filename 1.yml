@@ -20,7 +20,7 @@ services:
     restart: always
     image: postgres:15.2
     env_file:
-      - configs/db.env
+      - .env
     volumes:
       - ./pg_data:/var/lib/postgresql/data
 
@@ -28,11 +28,10 @@ services:
     container_name: zookeeper
     image: confluentinc/cp-zookeeper:7.6.0
     hostname: zookeeper
-
     ports:
       - "2181:2181"
     env_file:
-      - configs/zookeeper.env
+      - .env
     volumes:
       - zookeeper_data:/var/lib/zookeeper/data
       - zookeeper_log:/var/lib/zookeeper/log
@@ -47,7 +46,7 @@ services:
       - "9092:9092"
       - "29092:29092"
     env_file:
-      - configs/kafka.env
+      - .env
     volumes:
       - kafka_data:/var/lib/kafka/data
     healthcheck:
@@ -76,6 +75,8 @@ services:
     image: redis:latest
     ports:
       - "45013:6379"
+    env_file:
+      - .env
     volumes:
       - redis_data:/data
     networks:

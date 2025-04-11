@@ -1,4 +1,4 @@
-0configs/
+X.env
 pg_data/
 zookeeper_data/
 zookeeper_log/
