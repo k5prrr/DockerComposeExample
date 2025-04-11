@@ -1,6 +1,6 @@
 0configs/
-pg-data/
-pg-data/
-zookeeper-data/
-zookeeper-log/
-kafka-data/
+pg_data/
+zookeeper_data/
+zookeeper_log/
+kafka_data/
+redis_data/
