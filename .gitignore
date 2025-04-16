@@ -4,3 +4,5 @@ zookeeper_data/
 zookeeper_log/
 kafka_data/
 redis_data/
+n8n_data/
+n8n_pg_data/

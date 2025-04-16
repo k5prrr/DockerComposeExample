@@ -12,7 +12,7 @@ docker stop $(docker ps -aq)
 
 docker rm $(docker ps -aq)
 
-docker-compose -f 1.yml up --force-recreate -d
+docker-compose -f n8n.yml up --force-recreate -d
 OR
 docker-compose  up --force-recreate -d
 

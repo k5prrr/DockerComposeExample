@@ -1,0 +1,39 @@
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # Базовый доступ (рекомендуется для безопасности)
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=ваш_логин
+      - N8N_BASIC_AUTH_PASSWORD=ваш_пароль
+      # Опциональные настройки (например, для внешних вебхуков)
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      # Прочее
+      - N8N_DB_TYPE=postgresdb
+      - DB_POSTGRESDB_DATABASE=n8n
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_USER=postgres
+      - DB_POSTGRESDB_PASSWORD=postgres
+    depends_on:
+      - postgres
+    volumes:
+      - n8n_data:/root/.n8n
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=n8n
+    volumes:
+      - n8n_pg_data:/var/lib/postgresql/data
+
+volumes:
+  n8n_data:
+  n8n_pg_data:
